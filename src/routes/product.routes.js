@@ -6,13 +6,13 @@ import {
 	getProduct,
 	searchProducts,
 	updateProduct,
-} from "../controllers/product.controllers";
-import { validateSchema } from "../middlewares/validateSchema";
+} from "../controllers/product.controllers.js";
+import { validateSchema } from "../middlewares/validateSchema.js";
 import {
 	newProductSchema,
 	updateProductSchema,
-} from "../schemas/product.schema";
-import { validateToken } from "../middlewares/validate.token";
+} from "../schemas/product.schema.js";
+import { validateToken } from "../middlewares/validate.token.js";
 
 export const productRouter = Router();
 

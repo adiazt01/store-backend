@@ -1,4 +1,4 @@
-import { prisma } from "../app";
+import { prisma } from "../app.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 

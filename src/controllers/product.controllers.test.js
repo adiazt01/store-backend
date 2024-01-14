@@ -35,7 +35,7 @@ describe("GET /api/products", () => {
 			.get("/api/products")
 			.set("Cookie", [`token=${token}`]);
 
-        console.log(response);
+		console.log(response);
 		expect(response.statusCode).toBe(200);
 		expect(response.body).toHaveProperty("products");
 	});
