@@ -15,6 +15,7 @@ model User {
   name      String?
   password  String
   products  Product[]
+  sell      Sell[]
 }
 
 model Product {
@@ -22,8 +23,21 @@ model Product {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   name      String
-  description String
   price     Float
   user      User     @relation(fields: [userId], references: [id])
   userId    String   @db.ObjectId
+  sells     Sell[]
+}
+
+model Sell {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  quantity   Int
+  unitPrice  Float
+  totalPrice Float
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @db.ObjectId
+  product    Product  @relation(fields: [productId], references: [id])
+  productId  String   @db.ObjectId
 }

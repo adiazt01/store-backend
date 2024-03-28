@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 import { PrismaClient } from "@prisma/client";
 import { userRouter } from "./routes/user.routes.js";
 import { productRouter } from "./routes/product.routes.js";
+import {sellRouter} from "./routes/sell.routes.js";
 
 export const prisma = new PrismaClient();
 
@@ -25,3 +26,4 @@ app.use(
 
 app.use("/api/auth", userRouter);
 app.use("/api/products", productRouter);
+app.use("/api/sells", sellRouter);

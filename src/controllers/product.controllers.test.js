@@ -23,23 +23,7 @@ beforeAll(async () => {
 	token = cookies[0].split(";")[0].replace("token=", "");
 });
 
-afterAll(async () => {
-	await prisma.user.deleteMany({
-		where: { email: userTest.email },
-	});
-});
 
-describe("GET /api/products", () => {
-	test("should return all products", async () => {
-		const response = await request(app)
-			.get("/api/products")
-			.set("Cookie", [`token=${token}`]);
-
-		console.log(response);
-		expect(response.statusCode).toBe(200);
-		expect(response.body).toHaveProperty("products");
-	});
-});
 
 describe("POST /api/products", () => {
 	test("should create a new product and get by his id", async () => {
@@ -65,5 +49,15 @@ describe("POST /api/products", () => {
 		expect(response2.body).toHaveProperty("product");
 		expect(response2.body.product).toHaveProperty("name");
 		expect(response2.body.product).toHaveProperty("description");
+	});
+});
+
+describe("GET /api/products", () => {
+	test("should return all products", async () => {
+		const response = await request(app)
+			.get("/api/products")
+			.set("Cookie", [`token=${token}`]);;
+		expect(response.statusCode).toBe(200);
+		expect(response.body).toHaveProperty("products");
 	});
 });
